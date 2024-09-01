@@ -21,6 +21,9 @@ func main() {
 		fmt.Println(err)
 	}
 	c := string(file)
+	if len(c) < 1 {
+		return
+	}
 	split := strings.Split(c, "\n")
 	for i := 0; i < len(split); i++ {
 		e, err := strconv.Atoi(split[i])
@@ -33,5 +36,5 @@ func main() {
 	fmt.Printf("Average: %d\n", Mathematics.Average(D))
 	fmt.Printf("Median: %d \n", Mathematics.Median(D))
 	fmt.Printf("Variance: %d \n", Mathematics.Variance(D, Mathematics.Average(D)))
-	fmt.Printf("Standard Deviation: %d \n",int(math.Sqrt(float64(Mathematics.Variance(D, Mathematics.Average(D))))))
+	fmt.Printf("Standard Deviation: %d \n", int(math.Sqrt(float64(Mathematics.Variance(D, Mathematics.Average(D))))))
 }
