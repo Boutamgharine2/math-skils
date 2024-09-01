@@ -29,6 +29,7 @@ func main() {
 		e, err := strconv.Atoi(split[i])
 		if err != nil {
 			fmt.Println(err)
+			return
 		}
 		D = append(D, e)
 	}
