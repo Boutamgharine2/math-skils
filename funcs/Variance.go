@@ -1,10 +1,12 @@
 package Mathematics
 
+import "math"
+
 func Variance(Valeurs []int, moyenne int) int {
-	n := 0
+	var n float64
 	for i := 0; i < len(Valeurs); i++ {
-		n += (Valeurs[i] - moyenne) * (Valeurs[i] - moyenne)
+		n += float64((Valeurs[i] - moyenne) * (Valeurs[i] - moyenne))
 	}
 
-	return n / len(Valeurs)
+	return int(math.Round(float64(n / float64(len(Valeurs)))))
 }

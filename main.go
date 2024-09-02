@@ -25,17 +25,24 @@ func main() {
 		return
 	}
 	split := strings.Split(c, "\n")
+	if split[len(split)-1] == "" {
+		split = split[:len(split)-1]
+	}
 	for i := 0; i < len(split); i++ {
-		e, err := strconv.Atoi(split[i])
-		if err != nil {
-			fmt.Println(err)
-			return
+		if split[i] != "" {
+			e, err := strconv.Atoi(split[i])
+			if err != nil {
+				fmt.Println("invalid number!!")
+				return
+			}
+			D = append(D, e)
+		} else {
+			continue
 		}
-		D = append(D, e)
 	}
 
 	fmt.Printf("Average: %d\n", Mathematics.Average(D))
 	fmt.Printf("Median: %d \n", Mathematics.Median(D))
 	fmt.Printf("Variance: %d \n", Mathematics.Variance(D, Mathematics.Average(D)))
-	fmt.Printf("Standard Deviation: %d \n", int(math.Sqrt(float64(Mathematics.Variance(D, Mathematics.Average(D))))))
+	fmt.Printf("Standard Deviation: %d \n", int(math.Round(math.Sqrt(float64(Mathematics.Variance(D, Mathematics.Average(D)))))))
 }

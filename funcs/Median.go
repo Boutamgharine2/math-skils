@@ -1,11 +1,18 @@
 package Mathematics
 
+import (
+	"math"
+	"sort"
+)
+
 func Median(Valeur []int) int {
-	ordonè := Clasement(Valeur)
-	if len(ordonè)%2 == 0 {
-		return (ordonè[(len(ordonè)/2)-1] + ordonè[(len(ordonè)/2)]) / 2
+	Valeur = Clasement(Valeur)
+	sort.Ints(Valeur)
+	n := len(Valeur)
+	if n%2 == 0 {
+		return int(math.Round(float64(Valeur[(n/2)-1]+Valeur[n/2]) / 2))
 	}
-	return ordonè[((len(ordonè)+1)/2)-1]
+	return Valeur[n/2]
 }
 
 func Clasement(slice []int) []int {
